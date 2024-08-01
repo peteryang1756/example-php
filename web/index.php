@@ -1,7 +1,8 @@
 <?php
 $config = array(
     'url' => 'https://help.ssangyongsports.eu.org/help/api/tickets.json',
-    'key' => '15F40196ED253DFDCF9F8051E54102EB'
+    'key1' => 'CED4211CA152BBDA90831B1F719D2E3C',
+    'key2' => 'AC1AEA4935E116E407EE6EEC1AA3D77E'  // 請替換為您的第二個 API key
 );
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -25,7 +26,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($data));
     curl_setopt($ch, CURLOPT_USERAGENT, 'osTicket API Client v1.7');
     curl_setopt($ch, CURLOPT_HEADER, FALSE);
-    curl_setopt($ch, CURLOPT_HTTPHEADER, array('Expect:', 'X-API-Key: ' . $config['key']));
+    curl_setopt($ch, CURLOPT_HTTPHEADER, array(
+        'Expect:', 
+        'X-API-Key1: ' . $config['key1'],
+        'X-API-Key2: ' . $config['key2']
+    ));
     curl_setopt($ch, CURLOPT_FOLLOWLOCATION, FALSE);
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
 
